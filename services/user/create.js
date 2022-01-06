@@ -6,13 +6,13 @@ module.exports = async (userData) => {
     const valid = userSchema.validate(userData);
 
     if (valid.error) {
-      return { err: { message: valid.error.message } };
+      return { err: { code: 'badRequest', message: valid.error.message } };
     }
 
     const findUserByEmail = await User.findOne({ where: { email: userData.email } });
 
     if (findUserByEmail) {
-      return { err: { message: 'User already registered' } };
+      return { err: { code: 'conflict', message: 'User already registered' } };
     }
     const created = await User.create(userData);
     return created;

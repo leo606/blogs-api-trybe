@@ -5,7 +5,7 @@ module.exports = async (req, _res, next) => {
     const { displayName, email, password, image } = req.body;
     const creation = await service.create({ displayName, email, password, image });
     if (creation.err) {
-      return next({ code: 'badRequest', message: creation.err.message });
+      return next({ code: creation.err.code, message: creation.err.message });
     }
     next();
   } catch (e) {
