@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const statusCodes = require('../utils/statusCodes.json');
 
 const secret = process.env.JWT_SECRET || 'nothing';
 const jwtConfig = {
@@ -9,17 +8,17 @@ const jwtConfig = {
 
 const { User } = require('../models');
 
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, statusCode } = req.toAuth;
     
-    const user = User.findOne({ where: { email, password } });
+    const user = await User.findOne({ where: { email, password } });
     if (!user) {
-      return next({ code: 'badRequest', message: 'notfound auth' });
+      return next({ code: 'badRequest', message: 'Invalid fields' });
     }
 
     const token = jwt.sign({ data: user }, secret, jwtConfig);
-    res.status(statusCodes.created).json({ token });
+    res.status(statusCode).json({ token });
   } catch (e) {
     console.log(e);
   }
