@@ -10,4 +10,6 @@ app.get('/', (request, response) => {
 
 app.use(require('./controllers'));
 
+app.use(require('./middlewares/error'));
+
 app.listen(3000, () => console.log('ouvindo porta 3000!'));
