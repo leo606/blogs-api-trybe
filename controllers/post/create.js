@@ -15,5 +15,6 @@ module.exports = async (req, res, next) => {
     res.status(statusCodes.created).json(created);
   } catch (e) {
     console.log(e);
+    res.status(statusCodes.InternalServerError);
   }
 };
