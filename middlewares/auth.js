@@ -11,7 +11,7 @@ const { User } = require('../models');
 module.exports = async (req, res, next) => {
   try {
     const { email, password, statusCode } = req.toAuth;
-    
+
     const user = await User.findOne({ where: { email, password } });
     if (!user) {
       return next({ code: 'badRequest', message: 'Invalid fields' });
