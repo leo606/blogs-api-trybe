@@ -9,5 +9,6 @@
   "notAcceptable": 406,
   "unprocessableEntity": 422,
   "conflict": 409,
-  "notImplemented": 501
+  "notImplemented": 501,
+  "InternalServerError": 500
 }
