@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
   }
   try {
   const decoded = jwt.verify(token, secret);
-  req.user = decoded;
+  req.user = decoded.data;
   next();
 } catch (e) {
   return next({ code: 'unauthorized', message: 'Expired or invalid token' });

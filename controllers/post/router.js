@@ -1,7 +1,8 @@
 const express = require('express');
+const { validateJWT } = require('../../middlewares');
 
 const router = express.Router();
 
-router.post('/', require('./create'));
+router.post('/', validateJWT, require('./create'));
 
 module.exports = router;

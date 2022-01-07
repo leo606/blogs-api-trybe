@@ -19,6 +19,7 @@ const catSchema = joi.object().keys({
 const postSchema = joi.object().keys({
   title: joi.string().required(),
   content: joi.string().required(),
+  userId: joi.number().integer().required(),
   categoryIds: joi.array().required(),
 });
 
