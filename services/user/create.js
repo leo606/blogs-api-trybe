@@ -1,5 +1,5 @@
 const { userSchema } = require('../../utils/joiSchemas');
-const { User } = require('../../models');
+const { Users } = require('../../models');
 
 module.exports = async (userData) => {
   try {
@@ -9,12 +9,12 @@ module.exports = async (userData) => {
       return { err: { code: 'badRequest', message: valid.error.message } };
     }
 
-    const findUserByEmail = await User.findOne({ where: { email: userData.email } });
+    const findUserByEmail = await Users.findOne({ where: { email: userData.email } });
 
     if (findUserByEmail) {
       return { err: { code: 'conflict', message: 'User already registered' } };
     }
-    const created = await User.create(userData);
+    const created = await Users.create(userData);
     return created;
   } catch (e) {
     console.log(e);

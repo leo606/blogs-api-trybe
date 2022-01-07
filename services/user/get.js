@@ -1,8 +1,8 @@
-const { User } = require('../../models');
+const { Users } = require('../../models');
 
 module.exports = async (id) => {
   try {
-    const user = await User.findByPk(id, { attributes: { exclude: ['password'] } });
+    const user = await Users.findByPk(id, { attributes: { exclude: ['password'] } });
     if (!user) {
       return { err: { code: 'notFound', message: 'User does not exist' } };
     }
