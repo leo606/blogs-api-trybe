@@ -16,8 +16,15 @@ const catSchema = joi.object().keys({
   name: joi.string().required(),
 });
 
+const postSchema = joi.object().keys({
+  title: joi.string().required(),
+  content: joi.string().required(),
+  categoryIds: joi.array().required(),
+});
+
 module.exports = {
   userSchema,
   loginSchema,
   catSchema,
+  postSchema,
 };
