@@ -5,7 +5,7 @@ module.exports = async (req, res, next) => {
   try {
     const { title, content, categoryIds } = req.body;
 
-    const created = service.create({ title, content, categoryIds });
+    const created = await service.create({ title, content, categoryIds });
 
     if (created.err) {
       return next({ code: created.err.code, message: created.err.message });
