@@ -12,7 +12,12 @@ const loginSchema = joi.object().keys({
   password: joi.string().min(6).required(),
 });
 
+const catSchema = joi.object().keys({
+  name: joi.string().required(),
+});
+
 module.exports = {
   userSchema,
   loginSchema,
+  catSchema,
 };
