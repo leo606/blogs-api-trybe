@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get('/:id', validateJWT, require('./get'));
 router.put('/:id', validateJWT, require('./put'));
+router.delete('/:id', validateJWT, require('./remove'));
 router.post('/', validateJWT, require('./create'));
 router.get('/', validateJWT, require('./list'));
 
