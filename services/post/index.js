@@ -3,6 +3,7 @@ const list = require('./list');
 const get = require('./get');
 const update = require('./update');
 const remove = require('./remove');
+const search = require('./search');
 
 module.exports = {
   create,
@@ -10,4 +11,5 @@ module.exports = {
   get,
   update,
   remove,
+  search,
 };
